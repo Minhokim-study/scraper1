@@ -16,12 +16,33 @@ soup = bs.BeautifulSoup(html, 'lxml')
 my_titles = soup.find("ul", {"class":"productListView viewTySM"}).find_all("p", {"class":"description"})
 my_prices = soup.find("ul", {"class":"productListView viewTySM"}).find_all("p", {"class":"price"})
 
+a = []
+b = []
 for title in my_titles:
-    for price in title:
-        print(price.text, end = ' ')
-    print()
+    a.append(title.text)
+
+for price in my_prices:
+    b.append(price.text)
+
+c = dict(zip(a, b))
+print (c)
     #print(soup.find("ul", {"class":"productListView viewTySM"}))
     #print(title.text)
+'''
+titles = [row.text for row in my_titles]
+prices = [row.text for row in my_prices]
+zipped_list = list(zip(titles, prices))
+dict_not_list = dict((zip(titles, prices))
+
+print (titles)
+
+for row in zipped_list:
+    print(row)
+
+for row in dict_not_list:
+    print(row)
+'''
+
 
 
 '''
